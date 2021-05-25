@@ -2,7 +2,6 @@ DS_Store
 .DS_Store
 .vscode/
 .json
-*.csv
 untitled*.ipynb
 env.py
 .ipynb_checkpoints/
