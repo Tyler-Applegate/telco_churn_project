@@ -32,7 +32,7 @@
 
 ### Initial Hypothoses:
 > - Hypothosis 1 - 
-> - {$H_0$}: 
+> - $H_0$: 
 > - $H_a$: 
 > - Hypothosis 2 -
 > - $H_0$:
