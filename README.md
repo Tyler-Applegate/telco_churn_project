@@ -22,3 +22,37 @@
 > - All modules required to replicate my project
 > - .csv file that documents my predications along side actual values for Telco Churn.
 > - All necessary Jupyter Notebooks to document each stage of the DS Pipeline.
+
+### Project Context:
+> - The Telco Churn data set came from the Codeup database.
+> - 
+
+### Data Dictionary:
+> - Insert snazzy table here
+
+### Initial Hypothoses:
+> - Hypothosis 1 - 
+> - $H_0$: 
+> - $H_a$: 
+> - Hypothosis 2 -
+> - $H_0$:
+> - $H_a$:
+
+## Executive Summary
+
+## Stages of DS Pipeline
+Plan -> Data Acquisition -> Data Prep -> Exploratory Analysis -> ML Models -> Delivery
+
+### Planning
+
+### Data Acquistion
+
+### Data Prep
+
+### Exploratory Analysis
+
+### ML Models
+
+### Delivery
+
+## How to Reproduce this Project
