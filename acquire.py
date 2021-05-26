@@ -11,12 +11,6 @@ import os
 from env import host, user, password
 
 # sets up a secure connection to the Codeup db using my login infor
-def get_db_url(db, user=user, host=host, password=password):
-    return f'mysql+pymysql://{user}:{password}@{host}/{db}'
-
-# assigns the telco_churn url to the variable name 'url' so it can be used in additional functions
-url = get_db_url('telco_churn')
-
 def get_connection(db, user=user, host=host, password=password):
     '''
     This function uses my env file to create a connection url to access
@@ -24,9 +18,12 @@ def get_connection(db, user=user, host=host, password=password):
     '''
     return f'mysql+pymysql://{user}:{password}@{host}/{db}'
 
+# This function will connect with the Codeup database to join all tables in the telco db
+# to return a pandas DataFrame
 def new_telco_data():
     '''
-    This function joins the 'customers', 'contract_types', 'internet_service_types', and 'payment_types' tables from the telco_churn db
+    This function joins the 'customers', 'contract_types', 'internet_service_types', 
+    and 'payment_types' tables from the telco_churn db
     and return a pandas DataFrame with all columns/values from all tables.
     '''
     sql_query = '''SELECT * 
@@ -36,6 +33,9 @@ def new_telco_data():
                     JOIN payment_types USING(payment_type_id)'''
     return pd.read_sql(sql_query, get_connection('telco_churn'))
 
+# This function plays on top of new_telco_data by 1st looking to see if there is a .csv of the telco Dataframe, and
+# creating one if there is not. This optomizes performance/runtime, by only needing to connect to the server 1 time
+# and then using a local .csv thereafter
 def get_telco_data():
     '''
     This function reads in Telco data from Codeup database, writes data to
