@@ -84,10 +84,23 @@ def prep_2_telco(df):
     # all object columns in a variable to drop
     obj_cols = list(df.select_dtypes('object').columns)
     # other columns to drop...
-    other_drops = ['payment_type_id', 'internet_service_type_id', 'contract_type_id']
+    other_drops = ['payment_type_id', 'internet_service_type_id', 'contract_type_id', 'tenure']
     # combine all drops into 1 list
     all_drops = obj_cols + other_drops
     # create new dataframe that has been cleaned up
     df_1 = df.drop(columns=all_drops)
 
     return df_1
+
+
+def split_data(df):
+    '''
+    take in a DataFrame and return train, validate, and test DataFrames; stratify on has_churn.
+    return train, validate, test DataFrames.
+    '''
+    train_validate, test = train_test_split(df, test_size=.2, random_state=1221, stratify=df.has_churn)
+    train, validate = train_test_split(train_validate, 
+                                       test_size=.3, 
+                                       random_state=1221, 
+                                       stratify=train_validate.has_churn)
+    return train, validate, test
