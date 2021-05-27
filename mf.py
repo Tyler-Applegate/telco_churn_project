@@ -56,7 +56,7 @@ def model_performs (X_df, y_df, model):
     #conf Matrix
     conf = confusion_matrix(y_df, pred)
     mat =  pd.DataFrame ((confusion_matrix(y_df, pred )),index = ['actual_no_churn','actual_churn'], columns =['pred_no_churn','pred_churn'])
-    rubric_df = pd.DataFrame([['True Negative', 'False positive'], ['False Negative', 'True Positive']], columns=mat.columns, index=mat.index)
+    rubric_df = pd.DataFrame([['TN', 'FP'], ['FN', 'TP']], columns=mat.columns, index=mat.index)
     cf = rubric_df + ': ' + mat.values.astype(str)
 
     #assign the values
@@ -148,13 +148,13 @@ def compare (model1, model2, X_df,y_df):
     #conf Matrix
     #model 1
     conf1 = confusion_matrix(y_df, pred1)
-    mat1 =  pd.DataFrame ((confusion_matrix(y_df, pred1 )),index = ['actual_dead','actual_survived'], columns =['pred_dead','pred_survived' ])
-    rubric_df = pd.DataFrame([['True Negative', 'False positive'], ['False Negative', 'True Positive']], columns=mat1.columns, index=mat1.index)
+    mat1 =  pd.DataFrame ((confusion_matrix(y_df, pred1 )),index = ['actual_no_churn','actual_churn'], columns =['pred_no_churn','pred_churn'])
+    rubric_df = pd.DataFrame([['TN', 'FP'], ['FN', 'TP']], columns=mat1.columns, index=mat1.index)
     cf1 = rubric_df + ': ' + mat1.values.astype(str)
     
     #model2
     conf2 = confusion_matrix(y_df, pred2)
-    mat2 =  pd.DataFrame ((confusion_matrix(y_df, pred2 )),index = ['actual_dead','actual_survived'], columns =['pred_dead','pred_survived' ])
+    mat2 =  pd.DataFrame ((confusion_matrix(y_df, pred2 )),index = ['actual_no_churn','actual_churn'], columns =['pred_no_churn','pred_churn'])
     cf2 = rubric_df + ': ' + mat2.values.astype(str)
     #model 1
     #assign the values
@@ -185,11 +185,11 @@ def compare (model1, model2, X_df,y_df):
     #classification report
     #model1
     clas_rep1 =pd.DataFrame(classification_report(y_df, pred1, output_dict=True)).T
-    clas_rep1.rename(index={'0': "dead", '1': "survived"}, inplace = True)
+    clas_rep1.rename(index={'0': "no_churn", '1': "churn"}, inplace = True)
 
     #model2
     clas_rep2 =pd.DataFrame(classification_report(y_df, pred2, output_dict=True)).T
-    clas_rep2.rename(index={'0': "dead", '1': "survived"}, inplace = True)
+    clas_rep2.rename(index={'0': "no_churn", '1': "churn"}, inplace = True)
     print(f'''
     ******       Model 1  ******                                ******     Model 2  ****** 
        Overall Accuracy:  {acc1:.2%}              |                Overall Accuracy:  {acc2:.2%}  
@@ -202,7 +202,7 @@ def compare (model1, model2, X_df,y_df):
     _____________________________________________________________________________________________________________
     ''')
     print('''
-    Positive =  'survived'
+    Positive =  'Churn'
 
     Confusion Matrix
     ''')
