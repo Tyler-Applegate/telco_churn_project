@@ -25,7 +25,6 @@
 
 ### Project Context:
 > - The Telco Churn data set came from the Codeup database.
-> - 
 
 ### Data Dictionary:
 > - Insert snazzy table here
@@ -56,3 +55,9 @@ Plan -> Data Acquisition -> Data Prep -> Exploratory Analysis -> ML Models -> De
 ### Delivery
 
 ## How to Reproduce this Project
+> - You will need your own env file with credentials for the database, along with these files to recreate my project:
+    > - README.md
+    > - acquire.py
+    > - prepare.py
+    > - explore.py
+    > - run the final_report.ipynb notebook

@@ -4,6 +4,8 @@
 import pandas as pd
 import numpy as np
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # my specific imports
 # this brings in my login credentials to the Codeup database
@@ -49,3 +51,35 @@ def telco_quant_ttest(df):
         print('p/2:   ', p/2)
         print('alpha: ', alpha)
         print('-------------------------------------')
+
+def telco_melt(df):
+    '''
+    This function will take in the cleaned/prepped/split telco_train and return a melted
+    dataframe of all numerical/continuous variables (except for total_charges)
+    '''
+#     melts the data into 3 cols (has_churn, measurement, value)
+# has_churn=[1,0]
+# measurement=['monthly_charges', 'tenure_months']
+# value = specific numerical value of each measurement
+    df = df[['has_churn', 'monthly_charges', 'tenure_months']].melt(id_vars = ['has_churn'],
+                         var_name = 'measurement',
+                         value_name = 'value')
+    return df
+
+def telco_strip(df):
+    '''
+    takes in my melted telco_train df and returns a swarm plot of all numerical/
+    continuous variables on the x-axis, with the value on the y-axis, and
+    includes a color hue to distinguish between churn vs no churn
+    '''
+    plt.figure(figsize=(8,6))
+    plt.title('Stripplot of monthly_charges and tenure_months w/ has_churn hue')
+    p = sns.stripplot(
+    x='measurement',
+    y='value',
+    hue='has_churn',
+    data=df,
+    jitter=1,
+    )
+    p.set(xlabel='variable')
+    return plt.show()
