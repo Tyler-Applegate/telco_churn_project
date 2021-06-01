@@ -55,3 +55,24 @@ def get_telco_data():
         df.to_csv('telco_df.csv')
         
     return df
+
+def overview(df):
+    '''
+    This function returns the shape and info of the df. It also includes a breakdown of the number of unique values
+    in each column to determine which are categorical/discrete, and which are numerical/continuous. Finally, it returns
+    a breakdown of the statistics on all numerica columns.
+    '''
+    print(f'This dataframe has {df.shape[0]} rows and {df.shape[1]} columns.')
+    print('----------------------------------')
+    print('')
+    print(df.info())
+    print('----------------------------------')
+    print('')
+    print('Unique value counts of each column')
+    print('')
+    print(df.nunique())
+    print('----------------------------------')
+    print('')
+    print('Stats on Numeric Columns')
+    print('')
+    print(df.describe())
