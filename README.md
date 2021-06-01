@@ -29,7 +29,34 @@
 ### Data Dictionary:
 |Target|Datatype|Definition|
 |:-------|:-------|:----------|
-|churn|7032 non-null: int64|0:no churn, 1:churn|
+|has_churn|7032 non-null: int64|0: no churn, 1: churn|
+
+|Feature|Datatype|Description|
+|:-------|:-------|:----------|
+|senior_citizen     |int64  |0: not a senior, 1: senior citizen|
+|monthly_charges    |float64|monthly bill in dollars and cents|
+|total_charges      |float64|total charges in dollars and cents|
+|auto_pay           |int64  |0: non-automatic payment, 1: automatic payment|
+|dsl                |int64  |0: no dsl internet, 1: dsl internet service|
+|fiber              |int64  |0: no fiber internet, 1: fiber internet service|
+|has_internet       |int64  |0: no internet service, 1: has internet service|
+|m2m                |int64  |0: not a month-to-month user, 1: month-to-month user|
+|one_year           |int64  |0: not a 1 yr contract, 1: 1 yr contract|
+|two_year           |int64  |0: not a 2 yr contract, 1: 2 yr contract|
+|has_contract       |int64  |0: no contract, 1: has a contract|
+|is_male            |int64  |0: female, 1: male|
+|has_partner        |int64  |0: single, 1: has a partner|
+|has_dep            |int64  |0: no dependents, 1: has dependents|
+|tenure_months      |int64  |tenure with telco in months|
+|has_phone          |int64  |0: no phone service, 1: has phone service|
+|multi_phone        |int64  |0: 1 or fewer phone lines, 1: 2 or more phone lines|
+|has_security       |int64  |0: no security features, 1: has security features|
+|has_backup         |int64  |0: no backup features, 1: has backup features|
+|has_protection     |int64  |0: no device protection, 1: has device protection|
+|has_support        |int64  |0: no support, 1: has support|
+|stream_tv          |int64  |0: no streaming tv, 1: has streaming tv|
+|stream_movies      |int64  |0: no streaming movies, 1: has streaming movies|
+|has_paperless      |int64  |0: paper bill, 1: has paperless billing|
 
 ### Initial Hypothoses:
 > - Hypothosis 1 - We reject the Null Hypothesis
