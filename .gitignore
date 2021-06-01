@@ -8,3 +8,4 @@ env.py
 __pycache__
 Thumbs.db
 *.xlsx
+telco_df.csv

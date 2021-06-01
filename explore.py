@@ -6,6 +6,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+import scipy.stats as stats
 
 # my specific imports
 # this brings in my login credentials to the Codeup database
@@ -28,7 +29,7 @@ def telco_cat_chi(df):
        'stream_movies', 'has_paperless']
     for cat in cat_vars:
         print(cat)
-        observed = pd.crosstab(train['has_churn'], train[cat])
+        observed = pd.crosstab(df['has_churn'], df[cat])
         chi2, p, degf, expected = stats.chi2_contingency(observed)
         print(f'chi^2 = {chi2:.4f}')
         print(f'p     = {p:.4f}')
